@@ -27,7 +27,7 @@ func TestMain(m *testing.M) {
 	}()
 
 	// Spin up 2 clusters.
-	client0, client1 = setupTestClient(), setupTestClient()
+	client0, client1 = setupTestCluster(), setupTestCluster()
 
 	// Run all tests.
 	code := m.Run()
@@ -46,7 +46,7 @@ func cleanup() {
 	}
 }
 
-func setupTestClient() *kubernetes.Clientset {
+func setupTestCluster() *kubernetes.Clientset {
 	env := envtest.Environment{}
 
 	cleanupFuncs = append(cleanupFuncs, env.Stop)
